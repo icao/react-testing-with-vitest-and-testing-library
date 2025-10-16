@@ -28,6 +28,8 @@ describe("MyAwesomeApp", () => {
 /**
  * Dentro de nuestro componente FirtsStepsApp, tenemos un array de objetos que representan los items en nuestro carro de compras.
  * Estos objetos tienen dos propiedades: productName y quantity.
- * No podemos testear el componente con la lista que esta mapeando, ya que no sabemos cuantos items hay en el array.
+ * No podemos testear el componente con la lista que esta mapeando, ya que nuestro componente podria estar haciendo peticiones o teniendo mas componentes hijos.
  * Para este test podemos usar un componente MOCK que nos permita controlar los items que se estan renderizando. Y asi corroborar que el componente se esta renderizando correctamente la lista de items.
+ * 
+ * Con el mock nos aseguramos que el componente ItemCounter no tenga ninguna logica interna que pueda afectar el test. Y nos enfocamos en probar que el componente FirstStepsApp renderiza la cantidad correcta de componentes ItemCounter.
  */
