@@ -34,21 +34,47 @@ describe("ItemCounter", () => {
 
   test("should decrease count when -1 button is pressed", () => {
     render(<ItemCounter name={"Test Item"} quantity={5} />);
-    const [ ,buttonSubtract] = screen.getAllByRole("button");
+    const [, buttonSubtract] = screen.getAllByRole("button");
 
     fireEvent.click(buttonSubtract);
-     screen.debug();
-    expect(screen.getByText("4")).toBeDefined()
-  })
+    screen.debug();
+    expect(screen.getByText("4")).toBeDefined();
+  });
 
   test("should not decrease count when -1 button is pressed and quantity is 1", () => {
     render(<ItemCounter name={"Test Item"} quantity={1} />);
 
     const [, buttonSubtract] = screen.getAllByRole("button");
-    
-    fireEvent.click(buttonSubtract)
-    screen.debug()
-    expect(screen.getByText("1")).toBeDefined()
 
-   })
+    fireEvent.click(buttonSubtract);
+    screen.debug();
+    expect(screen.getByText("1")).toBeDefined();
+  });
+
+  //! Testeando estilos css
+  test("should change to red when count is 1", () => {
+    const name = "Test Item";
+    const quantity = 1;
+
+    render(<ItemCounter name={name} quantity={quantity} />);
+
+    //! Preparamos el elemento, en este caso es el span con los estilos del nombre
+    const itemText = screen.getByText(name);
+    console.log("itemText", itemText.style.color);
+
+    expect(itemText.style.color).toBe("red"); //toBe( porque evaluamos un tipo de dato primitivo)
+  });
+  test("should change to black when count is greater than 1", () => {
+    const name = "Test Item";
+    const quantity = 2;
+
+    render(<ItemCounter name={name} quantity={quantity} />);
+
+    const itemText = screen.getByText(name);
+    console.log("itemText", itemText.style.color);
+
+    expect(itemText.style.color).toBe("black");
+  });
+
+  //!NOTA: Esta es una de las formas en las cuales podemos hacer uso de testear los estilos, no es la unica forma pero es una manera sencilla de hacerlo.
 });
