@@ -17,7 +17,7 @@ describe("MyAwesomeApp", () => {
   test("Should render the first name and lastname - screen", () => {
     // screen.debug() sirve para mostrar el contenido de la pagina inicial y si se ejecuta un evento que modifica el estado de la pagina, el contenido se actualiza.
     render(<MyAwesomeApp />);
-    screen.debug();
+    // screen.debug();
 
     // const h1 = screen.getByRole('heading', { level: 1 }) // Encuentra todas las coincidencias, no es especifico
 
