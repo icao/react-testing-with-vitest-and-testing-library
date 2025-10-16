@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { add, multiply, subtract } from "./Math.helpers";
+import { add, divide, multiply, subtract } from "./Math.helpers";
 
 describe("Add", () => {
   test("Should add two positive numbers", () => {
@@ -74,6 +74,23 @@ describe("Multiply", () => {
     expect(result).toBe(0);
   });
 });
+
+describe("Divide", () => {
+  test("Should dive two positive numbers", () => {
+    //!Arrange
+    const a = 2;
+    const b = 2;
+    //!Act
+    const result = divide(a, b);
+
+    //!Assert
+    // expect(result).toBe(1);
+    expect(result).toBe(a / b); // Otra forma de hacer la asersion mas dinamica
+  });
+
+  
+});
+
 
 /**
  * test()
