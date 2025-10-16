@@ -27,4 +27,28 @@ describe("MyAwesomeApp", () => {
 
     expect(h1.innerHTML).toContain("Cesar");
   });
+
+  test("should march Snapshot", () => {
+    const { container } = render(<MyAwesomeApp />);
+    // toMatchSnapshot() - crea una imagen del componente renderizado y la compara con una imagen guardada previamente. Si no existe la imagen guardada, la crea.
+    // Si la imagen guardada y la nueva imagen son diferentes, el test falla.
+    expect(container).toMatchSnapshot();
+
+    // Si el codigo varia, el snapshot debe ser actualizdo si se quiere que el test pase.
+  });
+
+  test("should march Snapshot - screen", () => {
+    render(<MyAwesomeApp />);
+
+    expect(screen.getByTestId("my-awesome-app")).toMatchSnapshot();
+
+    //!NOTA: No se recomienda usar el testid con. el snapshot porque este puede cambiar, tambien es muy volatil el testid, es por eso que no se suele usar.
+    //! Tambien se debe tener cuidado con el snapshot si es que le codigo cambia.
+
+  });
 });
+
+//! IMPORTANTE: Se recomienda usar:
+//! Container: para testear sobre un contenido que no sera moridifado por un evento
+//! Screen por si se quiere testear sobre un contenido que sera moridifado por un evento
+//! Testid: solo en casos muy especificos, no es lo recomendable

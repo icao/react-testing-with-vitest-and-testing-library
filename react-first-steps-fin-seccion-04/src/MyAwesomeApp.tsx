@@ -22,18 +22,18 @@ const myStyles: CSSProperties = {
 
 export const MyAwesomeApp = () => {
   return (
-    <>
+    <section data-testid="my-awesome-app">
       <h1 data-testid="first-name-title"> {firstName} </h1>
       <h3> {lastName} </h3>
       <h3> {lastName} Aqui mas </h3>
 
-      <p>{favoriteGames.join(", ")}</p>
+      <p className="mi-clase-favorita">{favoriteGames.join(", ")}</p>
       <p>{2 + 2}</p>
 
       <h1>{isActive ? "Activo" : "No activo"}</h1>
 
       <p style={myStyles}>{JSON.stringify(address)}</p>
-    </>
+    </section>
   );
 };
 
